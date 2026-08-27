@@ -38,12 +38,15 @@ These are live across every page. No action needed.
 
 The structured data declares Orlando/FL as the locality with no street address, which is the correct pattern for a business that doesn't publish a physical location. Google accepts this.
 
-## Still to replace before launch
+## Also done
 
-| # | Find | Replace with | Count |
-|---|------|--------------|-------|
-| 1 | `YOUR_FORM_ID` | Formspree form ID (Step 3 below) | 9 |
-| 2 | `arranbuyshomes.com` | The real domain, once purchased | 22 |
+| Item | Value |
+|------|-------|
+| Domain | `arranbuyshomes.com` — live on GitHub Pages with HTTPS |
+| Formspree endpoint | `https://formspree.io/f/mwlkebwg` (10 forms) |
+| Spam honeypot | `_gotcha` hidden field on every form |
+
+Nothing left to find-and-replace. The remaining work is photos and real project numbers.
 
 > **Heads up on the name.** The email is `arranbuys**houses**@gmail.com` but the site is branded `Arran Buys **Homes**`. Pick one before buying the domain — mismatched brand and email costs you credibility on every lead. If he'd rather be "Arran Buys Houses," say the word and I'll swap it site-wide in one pass.
 
