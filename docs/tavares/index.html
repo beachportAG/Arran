@@ -82,7 +82,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="../styles.css?v=32">
+<link rel="stylesheet" href="../styles.css?v=33">
 <style>
 .city-hero { position: relative; background: var(--ink); overflow: hidden;
   background-image: url('../images/hero-poster.jpg'); background-size: cover; background-position: center; }
@@ -177,6 +177,21 @@
 <main>
 
 <section class="city-hero">
+  <video class="hero-video" id="cityVideo" autoplay muted loop playsinline preload="auto"
+         poster="../images/hero-poster.jpg" aria-hidden="true" tabindex="-1"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"></video>
+  <script>
+  (function () {
+    var v = document.getElementById('cityVideo');
+    var small = window.matchMedia('(max-width: 860px)').matches;
+    v.poster = small ? '../images/hero-mobile-poster.jpg' : '../images/hero-poster.jpg';
+    var s = document.createElement('source');
+    s.src = small ? '../images/hero-mobile.mp4' : '../images/hero.mp4';
+    s.type = 'video/mp4';
+    v.appendChild(s);
+    v.load();
+  }());
+  </script>
   <div class="hero-inner">
     <div class="hero-left">
       <p class="hero-eyebrow">Tavares &middot; Lake County</p>
