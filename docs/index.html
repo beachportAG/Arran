@@ -132,7 +132,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="styles.css?v=30">
+<link rel="stylesheet" href="styles.css?v=32">
 </head>
 <body>
 
@@ -451,11 +451,12 @@
         <li>Relocating on short notice</li>
         <li>Divorce or separation</li>
         <li>Downsizing or upsizing</li>
-        <li>Behind on mortgage payments</li>
-        <li>Tired of being a landlord</li>
-        <li>Health or family changes</li>
-        <li>Property you never wanted</li>
+        <li class="sit-extra">Behind on mortgage payments</li>
+        <li class="sit-extra">Tired of being a landlord</li>
+        <li class="sit-extra">Health or family changes</li>
+        <li class="sit-extra">Property you never wanted</li>
       </ul>
+        <button class="sit-more" type="button">See 4 more</button>
     </div>
     <div class="sit-col">
       <h3>Any Condition</h3>
@@ -464,11 +465,12 @@
         <li>Storm, water, or fire damage</li>
         <li>Mold or termite damage</li>
         <li>Full of belongings or debris</li>
-        <li>Failed inspection</li>
-        <li>Unfinished renovation</li>
-        <li>Vacant and deteriorating</li>
-        <li>Dated and never updated</li>
+        <li class="sit-extra">Failed inspection</li>
+        <li class="sit-extra">Unfinished renovation</li>
+        <li class="sit-extra">Vacant and deteriorating</li>
+        <li class="sit-extra">Dated and never updated</li>
       </ul>
+        <button class="sit-more" type="button">See 4 more</button>
     </div>
     <div class="sit-col">
       <h3>Any Complication</h3>
@@ -477,11 +479,12 @@
         <li>Code enforcement violations</li>
         <li>Title problems or clouded title</li>
         <li>Tenants who won't leave</li>
-        <li>Little or no equity</li>
-        <li>Out-of-state owner</li>
-        <li>Multiple heirs who disagree</li>
-        <li>Pending foreclosure sale date</li>
+        <li class="sit-extra">Little or no equity</li>
+        <li class="sit-extra">Out-of-state owner</li>
+        <li class="sit-extra">Multiple heirs who disagree</li>
+        <li class="sit-extra">Pending foreclosure sale date</li>
       </ul>
+        <button class="sit-more" type="button">See 4 more</button>
     </div>
   </div>
 </section>
@@ -632,15 +635,19 @@
         <h4>Contact</h4>
         <div class="footer-contact">
           <a href="tel:3216048481">(321) 604-8481</a><br>
-          <a href="mailto:arranbuyshouses@gmail.com">arranbuyshouses@gmail.com</a><br>
-          <br>
+          <a href="mailto:arranbuyshouses@gmail.com">arranbuyshouses@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Based In</h4>
+        <div class="footer-contact">
           Orlando, Florida<br>
           <span style="font-size:11.5px;color:rgba(255,255,255,0.26);">Serving Central Florida</span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer">Arran Buys Homes is a real estate investment company that purchases, renovates, and resells or rents properties. We are not real estate agents or brokers and do not provide brokerage services, legal advice, tax advice, or financial advice. Offers are based on the condition and location of the property and its value after repairs. Nothing on this site is an offer to purchase any specific property, and no agreement exists until a written purchase contract is signed by both parties.</p>
+      <p class="footer-disclaimer">Arran Buys Homes is a real estate investment company that purchases, renovates, and resells or rents properties. We are not real estate agents or brokers and do not provide brokerage services, legal advice, tax advice, or financial advice. Offers are based on the condition and location of the property and its value after repairs. Nothing on this site is an offer to purchase any specific property, and no agreement exists until a written purchase contract is signed by both parties. Some of the company's owners or employees hold Florida real estate licenses. They are not acting as your real estate agent or broker in connection with any purchase by Arran Buys Homes, and no brokerage relationship is created unless separately agreed to in writing.</p>
       <p class="footer-copy">&copy; 2026 Arran Buys Homes</p>
     </div>
   </div>
@@ -705,6 +712,18 @@ if (window.matchMedia('(max-width: 860px)').matches) {
     card.addEventListener('click', toggle);
     card.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+}
+
+/* SITUATIONS "SEE MORE" (phones only) */
+if (window.matchMedia('(max-width: 860px)').matches) {
+  document.querySelectorAll('.sit-more').forEach(function (btn) {
+    var col = btn.closest('.sit-col');
+    var n = col.querySelectorAll('.sit-extra').length;
+    btn.addEventListener('click', function () {
+      col.classList.toggle('open');
+      btn.textContent = col.classList.contains('open') ? 'Show less' : 'See ' + n + ' more';
     });
   });
 }

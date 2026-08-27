@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=30">
+<link rel="stylesheet" href="../styles.css?v=32">
 <style>
 .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(138,116,7,0.10) 0%, transparent 60%); }
@@ -64,6 +64,15 @@
 .partner-form h2 { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.3px; }
 .partner-form .pf-sub { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; line-height: 1.6; }
 .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.cond-block { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 16px; }
+@media (max-width: 860px) {
+  .steps-grid { grid-template-columns: 1fr !important; gap: 12px; }
+  .step-card { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; align-items: baseline; padding: 18px 20px 20px; }
+  .step-num { grid-column: 1; grid-row: 1; font-size: 22px; margin-bottom: 0; opacity: 0.75; letter-spacing: -0.5px; }
+  .step-card h3 { grid-column: 2; grid-row: 1; margin-bottom: 0; font-size: 16px; }
+  .step-card p { grid-column: 2; grid-row: 2; margin-top: 8px; }
+  .step-card p strong { color: var(--accent-deep); font-weight: 800; }
+}
 @media (max-width: 1000px) { .val-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 860px) {
   .page-hero-inner { padding: 46px 22px 50px; }
@@ -252,59 +261,66 @@
       <p class="pf-sub">Same-day response, including on the deals we pass.</p>
       <form action="https://formspree.io/f/mwlkebwg" method="POST" autocomplete="off">
         <input type="hidden" name="_subject" value="WHOLESALER Deal - Arran Buys Homes">
-    <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="_source" value="Wholesaler Page">
+        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
         <div class="two-up">
           <div>
             <label for="w-name">Your Name</label>
             <input type="text" id="w-name" name="name" placeholder="Jane Smith" required autocomplete="new-password">
           </div>
           <div>
-            <label for="w-company">Company</label>
-            <input type="text" id="w-company" name="company" placeholder="Optional" autocomplete="new-password">
-          </div>
-        </div>
-        <div class="two-up">
-          <div>
             <label for="w-phone">Phone</label>
             <input type="tel" id="w-phone" name="phone" placeholder="(407) 555-0100" required autocomplete="new-password">
           </div>
-          <div>
-            <label for="w-email">Email</label>
-            <input type="email" id="w-email" name="email" placeholder="jane@example.com" required autocomplete="new-password">
-          </div>
         </div>
-        <label for="w-address">Property Address</label>
-        <input type="text" id="w-address" name="address" placeholder="123 Main St, Orlando FL" required autocomplete="new-password">
-        <div class="two-up">
-          <div>
-            <label for="w-price">Your Price</label>
-            <input type="text" id="w-price" name="price" placeholder="$185,000" required autocomplete="new-password">
+        <label for="w-email">Email</label>
+        <input type="email" id="w-email" name="email" placeholder="jane@example.com" required autocomplete="new-password">
+
+        <label for="w-has-deal">Do you have a specific deal right now?</label>
+        <select id="w-has-deal" name="has_deal">
+          <option value="">Choose one</option>
+          <option value="Yes - specific deal">Yes, I have a property</option>
+          <option value="No - buyers list">No, just add me to your buyer list</option>
+        </select>
+
+        <div id="wsDeal" class="cond-block" hidden>
+          <label for="w-address">Property Address</label>
+          <input type="text" id="w-address" name="address" placeholder="123 Main St, Orlando FL" autocomplete="new-password">
+          <div class="two-up">
+            <div>
+              <label for="w-price">Your Price</label>
+              <input type="text" id="w-price" name="price" placeholder="$185,000" autocomplete="new-password">
+            </div>
+            <div>
+              <label for="w-arv">Estimated ARV</label>
+              <input type="text" id="w-arv" name="arv" placeholder="$300,000" autocomplete="new-password">
+            </div>
           </div>
-          <div>
-            <label for="w-arv">Estimated ARV</label>
-            <input type="text" id="w-arv" name="arv" placeholder="$300,000" autocomplete="new-password">
+          <div class="two-up">
+            <div>
+              <label for="w-repairs">Repair Estimate</label>
+              <input type="text" id="w-repairs" name="repairs" placeholder="$55,000" autocomplete="new-password">
+            </div>
+            <div>
+              <label for="w-status">Contract Status</label>
+              <select id="w-status" name="contract_status">
+                <option>Under contract now</option>
+                <option>Contract pending signature</option>
+                <option>Negotiating with seller</option>
+              </select>
+            </div>
           </div>
+          <label for="w-photos">Link to Photos</label>
+          <input type="text" id="w-photos" name="photos" placeholder="Dropbox, Drive, or listing link" autocomplete="new-password">
+          <label for="w-notes">Notes</label>
+          <textarea id="w-notes" name="notes" rows="3" placeholder="Occupancy, liens, deadline, anything we should know..."></textarea>
         </div>
-        <div class="two-up">
-          <div>
-            <label for="w-repairs">Repair Estimate</label>
-            <input type="text" id="w-repairs" name="repairs" placeholder="$55,000" autocomplete="new-password">
-          </div>
-          <div>
-            <label for="w-status">Contract Status</label>
-            <select id="w-status" name="contract_status">
-              <option>Under contract now</option>
-              <option>Contract pending signature</option>
-              <option>Negotiating with seller</option>
-            </select>
-          </div>
+
+        <div id="wsList" class="cond-block" hidden>
+          <label for="w-areas">Where do you usually wholesale?</label>
+          <input type="text" id="w-areas" name="areas" placeholder="Counties or cities you work in" autocomplete="new-password">
         </div>
-        <label for="w-photos">Link to Photos</label>
-        <input type="text" id="w-photos" name="photos" placeholder="Dropbox, Drive, or listing link" autocomplete="new-password">
-        <label for="w-notes">Notes</label>
-        <textarea id="w-notes" name="notes" rows="3" placeholder="Occupancy, liens, deadline, anything we should know..."></textarea>
-        <button type="submit">Submit Deal</button>
+
+        <button type="submit">Send</button>
         <p class="form-fine">We purchase properties and take assignment of purchase contracts. We are not brokers and do not pay referral fees for brokerage services.</p>
       </form>
     </div>
@@ -379,15 +395,19 @@
         <h4>Contact</h4>
         <div class="footer-contact">
           <a href="tel:3216048481">(321) 604-8481</a><br>
-          <a href="mailto:arranbuyshouses@gmail.com">arranbuyshouses@gmail.com</a><br>
-          <br>
+          <a href="mailto:arranbuyshouses@gmail.com">arranbuyshouses@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Based In</h4>
+        <div class="footer-contact">
           Orlando, Florida<br>
           <span style="font-size:11.5px;color:rgba(255,255,255,0.26);">Serving Central Florida</span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer">Arran Buys Homes is a real estate investment company that purchases properties and takes assignment of purchase contracts. We are not licensed real estate brokers or agents, do not provide brokerage services, and do not pay referral or finder's fees for procuring real estate transactions. Nothing on this page is an offer to purchase any specific property, and no agreement exists until a written purchase contract is signed by both parties.</p>
+      <p class="footer-disclaimer">Arran Buys Homes is a real estate investment company that purchases properties and takes assignment of purchase contracts. We are not licensed real estate brokers or agents, do not provide brokerage services, and do not pay referral or finder's fees for procuring real estate transactions. Nothing on this page is an offer to purchase any specific property, and no agreement exists until a written purchase contract is signed by both parties. Some of the company's owners or employees hold Florida real estate licenses. They are not acting as your real estate agent or broker in connection with any purchase by Arran Buys Homes, and no brokerage relationship is created unless separately agreed to in writing.</p>
       <p class="footer-copy">&copy; 2026 Arran Buys Homes</p>
     </div>
   </div>
@@ -428,6 +448,22 @@ function closeMobileForm() {
   document.body.style.width = '';
   window.scrollTo(0, _scrollY);
 }
+/* WHOLESALER FORM: only ask deal questions if there's a deal */
+(function () {
+  var sel = document.getElementById('w-has-deal');
+  if (!sel) return;
+  var deal = document.getElementById('wsDeal');
+  var list = document.getElementById('wsList');
+  var addr = document.getElementById('w-address');
+  var price = document.getElementById('w-price');
+  sel.addEventListener('change', function () {
+    var yes = sel.value === 'Yes - specific deal';
+    deal.hidden = !yes;
+    list.hidden = (sel.value === '' || yes);
+    if (addr) addr.required = yes;
+    if (price) price.required = yes;
+  });
+}());
 document.querySelectorAll('.faq-q').forEach(function (q) {
   q.addEventListener('click', function () { this.parentElement.classList.toggle('open'); });
 });

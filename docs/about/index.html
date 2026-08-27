@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=30">
+<link rel="stylesheet" href="../styles.css?v=32">
 <style>
 .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(138,116,7,0.10) 0%, transparent 60%); }
@@ -36,6 +36,8 @@
 .prose strong { color: var(--ink); font-weight: 700; }
 .val-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
 .val-card { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 14px; padding: 28px 26px; }
+.val-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--ink); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 19px; margin-bottom: 15px; transition: background 0.28s; }
+.val-card:hover .val-icon { background: var(--accent); }
 .val-card h3 { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.2px; }
 .val-card p { font-size: 13.8px; color: var(--text-light); line-height: 1.75; font-weight: 300; }
 .side-card { background: var(--cream); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px; padding: 24px 26px; margin-bottom: 16px; }
@@ -64,6 +66,21 @@
 .partner-form h2 { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.3px; }
 .partner-form .pf-sub { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; line-height: 1.6; }
 .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.carousel-section { padding-bottom: 0; }
+.carousel { position: relative; max-width: 420px; margin: 34px auto 0; }
+.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+.carousel-slide { flex: 0 0 100%; min-width: 0; padding: 0 4px; }
+.carousel-slide img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 10px 34px rgba(43,50,56,0.14); }
+.car-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: var(--white); border: 1px solid var(--line); color: var(--ink); font-size: 19px; line-height: 1; cursor: pointer; box-shadow: 0 3px 12px rgba(43,50,56,0.16); z-index: 2; }
+.car-nav:hover { background: var(--accent); border-color: var(--accent); }
+.car-prev { left: -10px; } .car-next { right: -10px; }
+.car-dots { display: flex; gap: 7px; justify-content: center; margin-top: 16px; }
+.car-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); border: none; padding: 0; cursor: pointer; transition: background 0.2s, width 0.2s; }
+.car-dot.active { background: var(--accent-deep); width: 20px; border-radius: 4px; }
+@media (max-width: 860px) {
+  .carousel { max-width: 100%; }
+  .car-prev { left: 2px; } .car-next { right: 2px; }
+}
 .ph-split { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 52px; align-items: center; }
 .ph-split > * { min-width: 0; }
 .ph-photo { max-width: 260px; margin: 0 0 0 auto; }
@@ -78,6 +95,34 @@
   .ph-split { grid-template-columns: 1fr; gap: 0; }
   .ph-photo { display: none; }
   .val-grid, .box-grid { grid-template-columns: 1fr; gap: 14px; }
+  /* Value cards become tap-to-expand rows on phones */
+  .val-grid { gap: 10px; }
+  .val-card {
+    display: grid;
+    grid-template-columns: 34px 1fr 18px;
+    grid-template-areas: "icon title chev" "body body body";
+    align-items: center;
+    column-gap: 13px;
+    padding: 15px 17px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .val-card.open { border-color: rgba(138,116,7,0.45); }
+  .val-icon { grid-area: icon; width: 34px; height: 34px; font-size: 16px; margin-bottom: 0; border-radius: 9px; }
+  .val-card.open .val-icon { background: var(--accent); }
+  .val-card h3 { grid-area: title; margin-bottom: 0; font-size: 15px; }
+  .val-card::after {
+    grid-area: chev; content: ''; width: 8px; height: 8px; justify-self: end;
+    border-right: 2px solid var(--accent-deep); border-bottom: 2px solid var(--accent-deep);
+    transform: translateY(-2px) rotate(45deg); transition: transform 0.3s ease;
+  }
+  .val-card.open::after { transform: translateY(2px) rotate(-135deg); }
+  .val-card p {
+    grid-area: body; max-height: 0; overflow: hidden; padding: 0; opacity: 0;
+    transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease;
+  }
+  .val-card.open p { max-height: 320px; padding: 11px 0 2px; opacity: 1; }
+
   .two-up { grid-template-columns: 1fr; }
 }
 </style>
@@ -152,6 +197,23 @@
   </div>
 </section>
 
+<section class="section carousel-section">
+  <p class="section-label centered">On The Ground</p>
+  <h2 class="section-title centered">Houses we showed up for</h2>
+  <div class="carousel" id="workCarousel">
+    <div class="carousel-track" id="carTrack">
+      <div class="carousel-slide"><img src="../images/work-1.jpg" alt="Arran with a seller in front of a Central Florida home he purchased" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../images/work-2.jpg" alt="Arran holding an Arran Buys Homes sign at a house needing repair" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../images/work-3.jpg" alt="Arran outside a Central Florida property he bought for cash" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../images/work-4.jpg" alt="Arran with a we buy houses sign outside a home in Central Florida" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../images/work-5.jpg" alt="Arran in front of a house purchased as-is in Central Florida" loading="lazy"></div>
+    </div>
+    <button class="car-nav car-prev" id="carPrev" aria-label="Previous photo">&#8249;</button>
+    <button class="car-nav car-next" id="carNext" aria-label="Next photo">&#8250;</button>
+    <div class="car-dots" id="carDots"></div>
+  </div>
+</section>
+
 <section class="section">
   <div class="split">
     <div class="prose">
@@ -163,7 +225,7 @@
     </div>
     <div>
       <div class="side-card">
-        <h4>At a Glance</h4>
+        <h4>Meet Arran</h4>
         <ul>
           <li>Raised in Melbourne, Florida</li>
           <li>University of Central Florida graduate</li>
@@ -186,30 +248,36 @@
 <section class="benefits-section">
   <div class="section">
     <p class="section-label centered">How He Works</p>
-    <h2 class="section-title centered">Four things that don't change</h2>
+    <h2 class="section-title centered">Six things that don't change</h2>
     <p class="section-sub centered">These aren't marketing lines. They're the reasons sellers refer their neighbors.</p>
     <div class="val-grid">
       <div class="val-card">
+        <div class="val-icon">&#128269;</div>
         <h3>He Shows His Work</h3>
         <p>Arran walks the property, prices the work it needs, and then explains how he reached the number. You'll understand what's driving it instead of being handed a figure and told to take it or leave it.</p>
       </div>
       <div class="val-card">
+        <div class="val-icon">&#128100;</div>
         <h3>One Person, Start to Finish</h3>
         <p>No handoffs between an acquisitions rep, a transaction coordinator, and someone you've never spoken to. The person who makes the promise is the person who keeps it.</p>
       </div>
       <div class="val-card">
+        <div class="val-icon">&#9878;</div>
         <h3>Honest About the Tradeoff</h3>
         <p>A cash sale trades some price for speed, certainty, and zero effort or expense on your part. That's a real tradeoff and he'll explain it plainly instead of pretending it doesn't exist.</p>
       </div>
       <div class="val-card">
+        <div class="val-icon">&#9995;</div>
         <h3>No Pressure, Ever</h3>
         <p>You get a written offer and time to think about it. Have an attorney review it. Talk to your family. Get a second opinion. If the answer is no, that's a completely fine answer.</p>
       </div>
       <div class="val-card">
+        <div class="val-icon">&#128296;</div>
         <h3>The Hard Stuff Is the Point</h3>
         <p>Liens, code violations, probate, hostile tenants, a foreclosure date on the calendar. These are the calls other buyers hang up on. They're the ones worth making here.</p>
       </div>
       <div class="val-card">
+        <div class="val-icon">&#128205;</div>
         <h3>Local, Not National</h3>
         <p>He buys in Central Florida because he knows what a roof costs here, what a permit takes in this county, and what a neighborhood is actually worth. That knowledge is why the numbers hold up.</p>
       </div>
@@ -265,15 +333,19 @@
         <h4>Contact</h4>
         <div class="footer-contact">
           <a href="tel:3216048481">(321) 604-8481</a><br>
-          <a href="mailto:arranbuyshouses@gmail.com">arranbuyshouses@gmail.com</a><br>
-          <br>
+          <a href="mailto:arranbuyshouses@gmail.com">arranbuyshouses@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Based In</h4>
+        <div class="footer-contact">
           Orlando, Florida<br>
           <span style="font-size:11.5px;color:rgba(255,255,255,0.26);">Serving Central Florida</span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer">Arran Buys Homes is a real estate investment company that purchases, renovates, and resells or rents properties. We are not real estate agents or brokers and do not provide brokerage services, legal advice, tax advice, or financial advice. Offers are based on the condition and location of the property and its value after repairs. Nothing on this site is an offer to purchase any specific property, and no agreement exists until a written purchase contract is signed by both parties.</p>
+      <p class="footer-disclaimer">Arran Buys Homes is a real estate investment company that purchases, renovates, and resells or rents properties. We are not real estate agents or brokers and do not provide brokerage services, legal advice, tax advice, or financial advice. Offers are based on the condition and location of the property and its value after repairs. Nothing on this site is an offer to purchase any specific property, and no agreement exists until a written purchase contract is signed by both parties. Some of the company's owners or employees hold Florida real estate licenses. They are not acting as your real estate agent or broker in connection with any purchase by Arran Buys Homes, and no brokerage relationship is created unless separately agreed to in writing.</p>
       <p class="footer-copy">&copy; 2026 Arran Buys Homes</p>
     </div>
   </div>
@@ -314,6 +386,50 @@ function closeMobileForm() {
   document.body.style.width = '';
   window.scrollTo(0, _scrollY);
 }
+/* VALUE CARD ACCORDION (phones only) */
+if (window.matchMedia('(max-width: 860px)').matches) {
+  document.querySelectorAll('.val-card').forEach(function (card) {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    function t() { card.classList.toggle('open'); }
+    card.addEventListener('click', t);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); }
+    });
+  });
+}
+
+/* WORK CAROUSEL */
+(function () {
+  var track = document.getElementById('carTrack');
+  if (!track) return;
+  var slides = track.children, dots = document.getElementById('carDots');
+  var i = 0, n = slides.length, timer = null;
+  for (var k = 0; k < n; k++) {
+    var d = document.createElement('button');
+    d.className = 'car-dot' + (k === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Photo ' + (k + 1));
+    (function (idx) { d.addEventListener('click', function () { go(idx); restart(); }); }(k));
+    dots.appendChild(d);
+  }
+  function go(x) {
+    i = (x + n) % n;
+    track.style.transform = 'translateX(-' + (i * 100) + '%)';
+    for (var k = 0; k < dots.children.length; k++) dots.children[k].classList.toggle('active', k === i);
+  }
+  function restart() { clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 5000); }
+  document.getElementById('carPrev').addEventListener('click', function () { go(i - 1); restart(); });
+  document.getElementById('carNext').addEventListener('click', function () { go(i + 1); restart(); });
+  var sx = null;
+  track.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function (e) {
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) { go(dx < 0 ? i + 1 : i - 1); restart(); }
+    sx = null;
+  }, { passive: true });
+  restart();
+}());
 document.querySelectorAll('.faq-q').forEach(function (q) {
   q.addEventListener('click', function () { this.parentElement.classList.toggle('open'); });
 });
