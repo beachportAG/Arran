@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=34">
+<link rel="stylesheet" href="../styles.css?v=36">
 <style>
 .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(138,116,7,0.10) 0%, transparent 60%); }
@@ -66,14 +66,14 @@
 .partner-form h2 { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.3px; }
 .partner-form .pf-sub { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; line-height: 1.6; }
 .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
-.carousel-section { padding-bottom: 0; }
-.carousel { position: relative; max-width: 420px; margin: 34px auto 0; }
+.carousel-section { padding-top: 34px; padding-bottom: 0; }
+.carousel { position: relative; max-width: 420px; margin: 0 auto; overflow: hidden; }
 .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
 .carousel-slide { flex: 0 0 100%; min-width: 0; padding: 0 4px; }
 .carousel-slide img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 10px 34px rgba(43,50,56,0.14); }
 .car-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: var(--white); border: 1px solid var(--line); color: var(--ink); font-size: 19px; line-height: 1; cursor: pointer; box-shadow: 0 3px 12px rgba(43,50,56,0.16); z-index: 2; }
 .car-nav:hover { background: var(--accent); border-color: var(--accent); }
-.car-prev { left: -10px; } .car-next { right: -10px; }
+.car-prev { left: 8px; } .car-next { right: 8px; }
 .car-dots { display: flex; gap: 7px; justify-content: center; margin-top: 16px; }
 .car-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); border: none; padding: 0; cursor: pointer; transition: background 0.2s, width 0.2s; }
 .car-dot.active { background: var(--accent-deep); width: 20px; border-radius: 4px; }
@@ -81,19 +81,19 @@
   .carousel { max-width: 100%; }
   .car-prev { left: 2px; } .car-next { right: 2px; }
 }
+.ph-slot { min-width: 0; }
+.ph-slot .carousel { max-width: 300px; margin: 0 0 0 auto; }
+.ph-slot .carousel-slide { padding: 0; }
+.ph-slot .car-dots { margin-top: 14px; }
 .ph-split { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 52px; align-items: center; }
 .ph-split > * { min-width: 0; }
-.ph-photo { max-width: 260px; margin: 0 0 0 auto; }
-.ph-frame { position: relative; display: block; }
-.ph-frame::before { content: ''; position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px; border: 2px solid var(--accent); border-radius: 8px; opacity: 0.75; }
-.ph-photo img { width: 100%; display: block; border-radius: 8px; border: 1px solid var(--line); position: relative; z-index: 1; }
 @media (max-width: 1000px) { .val-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 860px) {
   .page-hero-inner { padding: 46px 22px 50px; }
   .page-hero h1 { font-size: 30px; }
   .split { grid-template-columns: 1fr; gap: 36px; }
   .ph-split { grid-template-columns: 1fr; gap: 0; }
-  .ph-photo { display: none; }
+  .ph-slot { display: none; }
   .val-grid, .box-grid { grid-template-columns: 1fr; gap: 14px; }
   /* Value cards become tap-to-expand rows on phones */
   .val-grid { gap: 10px; }
@@ -191,17 +191,14 @@
       <a href="tel:3216048481" class="btn-ghost-light">Call (321) 604-8481</a>
     </div>
     </div>
-    <figure class="ph-photo">
-      <span class="ph-frame"><img src="../images/arran-team-sign.jpg" alt="Arran and his team holding an Arran Buys Homes sign in front of a house in Central Florida" loading="lazy"></span>
-    </figure>
+    <div class="ph-slot" id="heroSlot"></div>
   </div>
 </section>
 
-<section class="section carousel-section">
-  <p class="section-label centered">On The Ground</p>
-  <h2 class="section-title centered">Houses we showed up for</h2>
+<section class="section carousel-section" id="carouselSection">
   <div class="carousel" id="workCarousel">
     <div class="carousel-track" id="carTrack">
+      <div class="carousel-slide"><img src="../images/arran-team-sign.jpg" alt="Arran and his team holding an Arran Buys Homes sign in front of a Central Florida house" loading="lazy"></div>
       <div class="carousel-slide"><img src="../images/work-1.jpg" alt="Arran with a seller in front of a Central Florida home he purchased" loading="lazy"></div>
       <div class="carousel-slide"><img src="../images/work-2.jpg" alt="Arran holding an Arran Buys Homes sign at a house needing repair" loading="lazy"></div>
       <div class="carousel-slide"><img src="../images/work-3.jpg" alt="Arran outside a Central Florida property he bought for cash" loading="lazy"></div>
@@ -398,6 +395,18 @@ if (window.matchMedia('(max-width: 860px)').matches) {
     });
   });
 }
+
+/* Desktop shows the carousel in the hero; phones keep it inline above The Story */
+(function () {
+  var car = document.getElementById('workCarousel');
+  var slot = document.getElementById('heroSlot');
+  var sect = document.getElementById('carouselSection');
+  if (!car || !slot || !sect) return;
+  if (window.matchMedia('(min-width: 861px)').matches) {
+    slot.appendChild(car);
+    sect.style.display = 'none';
+  }
+}());
 
 /* WORK CAROUSEL */
 (function () {
