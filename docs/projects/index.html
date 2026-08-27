@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=22">
+<link rel="stylesheet" href="../styles.css?v=25">
 <style>
 /* ===== PAGE HERO ===== */
 .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
@@ -31,7 +31,7 @@
 .page-hero p { font-size: 16.5px; color: var(--text-light); font-weight: 300; line-height: 1.8; max-width: 640px; }
 
 /* ===== STAT ROW ===== */
-.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 38px; max-width: 720px; }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 38px; max-width: 720px; }
 .stat { background: var(--white); padding: 20px 22px; }
 .stat b { display: block; font-size: 27px; font-weight: 800; color: var(--accent-deep); line-height: 1.1; letter-spacing: -0.6px; }
 .stat span { font-size: 11.5px; color: var(--text-light); font-weight: 600; letter-spacing: 0.9px; text-transform: uppercase; }
@@ -93,7 +93,10 @@
 @media (max-width: 860px) {
   .page-hero-inner { padding: 46px 22px 50px; }
   .page-hero h1 { font-size: 30px; }
-  .stat-row { grid-template-columns: 1fr 1fr; }
+  .stat-row { grid-template-columns: repeat(3, 1fr); }
+  .stat { padding: 16px 12px; }
+  .stat b { font-size: 21px; }
+  .stat span { font-size: 10px; letter-spacing: 0.6px; }
   .pj { grid-template-columns: 1fr; }
   .pj-info { padding: 24px 22px 26px; }
   .pj-info h2 { font-size: 20px; }
@@ -165,7 +168,6 @@
     <h1>Houses nobody wanted.<br>Rebuilt from the studs.</h1>
     <p>Every property below was bought as-is, in cash, directly from an owner who needed out. No agents, no listings, no repairs asked of the seller. Drag the sliders to see what changed.</p>
     <div class="stat-row">
-      <div class="stat"><b>40+</b><span>Homes Bought</span></div>
       <div class="stat"><b>14</b><span>Avg. Days to Close</span></div>
       <div class="stat"><b>6</b><span>Counties Served</span></div>
       <div class="stat"><b>$0</b><span>Seller Fees</span></div>

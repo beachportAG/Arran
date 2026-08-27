@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Arran | Local Cash Home Buyer in Orlando, FL</title>
-<meta name="description" content="Meet Arran, a U.S. Army infantry combat veteran and local Central Florida cash home buyer. One person start to finish, no call center, and no retrading after you accept the offer.">
+<meta name="description" content="Meet Arran, raised in Melbourne, UCF grad, U.S. Army infantry combat veteran, and a local Central Florida cash home buyer. One person start to finish, no call center, and no retrading after you accept the offer.">
 <link rel="canonical" href="https://arranbuyshomes.com/about/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arranbuyshomes.com/about/">
@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=22">
+<link rel="stylesheet" href="../styles.css?v=25">
 <style>
 .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(138,116,7,0.10) 0%, transparent 60%); }
@@ -64,11 +64,20 @@
 .partner-form h2 { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.3px; }
 .partner-form .pf-sub { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; line-height: 1.6; }
 .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.ph-split { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 52px; align-items: center; }
+.ph-split > * { min-width: 0; }
+.ph-photo { position: relative; max-width: 260px; margin: 0 0 0 auto; }
+.ph-photo img { width: 100%; display: block; border-radius: 8px; border: 1px solid var(--line); }
+.ph-photo::before { content: ''; position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px; border: 2px solid var(--accent); border-radius: 8px; opacity: 0.75; }
+.ph-photo img { position: relative; z-index: 1; }
+.ph-photo figcaption { position: relative; z-index: 1; margin-top: 12px; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent-deep); text-align: center; }
 @media (max-width: 1000px) { .val-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 860px) {
   .page-hero-inner { padding: 46px 22px 50px; }
   .page-hero h1 { font-size: 30px; }
   .split { grid-template-columns: 1fr; gap: 36px; }
+  .ph-split { grid-template-columns: 1fr; gap: 30px; }
+  .ph-photo { max-width: 190px; margin: 0 auto; }
   .val-grid, .box-grid { grid-template-columns: 1fr; gap: 14px; }
   .two-up { grid-template-columns: 1fr; }
 }
@@ -128,7 +137,8 @@
 <main>
 
 <section class="page-hero">
-  <div class="page-hero-inner">
+  <div class="page-hero-inner ph-split">
+    <div class="ph-copy">
     <p class="section-label">About</p>
     <h1>The buyer who actually<br>shows up himself.</h1>
     <p class="ph-sub">Arran Buys Homes is one person and a crew, not a franchise with a call center. He's a U.S. Army infantry combat veteran, and he still runs things the same way. When you call, you get Arran. When someone walks your property, that's Arran. When you sit down at closing, he's across the table.</p>
@@ -136,6 +146,11 @@
       <a href="../#offer" class="btn-primary" onclick="if(window.innerWidth<=860){openMobileForm();return false;}">Get My Cash Offer</a>
       <a href="tel:3216048481" class="btn-ghost-light">Call (321) 604-8481</a>
     </div>
+    </div>
+    <figure class="ph-photo">
+      <img src="../images/arran-army.jpg" alt="Arran saluting in U.S. Army dress uniform" loading="lazy">
+      <figcaption>U.S. Army infantry &middot; combat veteran</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -145,7 +160,7 @@
       <p class="section-label">The Story</p>
       <h2 class="section-title">Why buy the houses nobody else wants?</h2>
       <p>Most people looking at a house with a failing roof, thirty years of deferred maintenance, and a garage full of someone's belongings see a problem. <strong>Arran sees the house it used to be, and the house it can be again.</strong></p>
-      <p>Before any of this he served in the U.S. Army infantry and deployed to combat. That background shows up in how he works more than in how he talks about it: show up when you said you would, tell people the truth even when it's inconvenient, and finish what you start.</p>
+      <p>He grew up in Melbourne on Florida's east coast, went to the University of Central Florida, and never really left. Before any of this he served in the U.S. Army infantry and deployed to combat. That background shows up in how he works more than in how he talks about it: show up when you said you would, tell people the truth even when it's inconvenient, and finish what you start.</p>
       <p>He started buying properties in Central Florida because he kept seeing the same thing happen. Someone inherits a house they can't afford to fix. A landlord gets worn down by one bad tenant too many. A family needs to move in three weeks and the market wants three months. In every case the traditional path, list it with an agent and wait, was the worst possible fit, and it was the only option anyone offered them.</p>
       <p>So the business is built around the opposite of that. Buy it as-is. Pay cash. Close on whatever date works for the seller. Then do the actual work of putting the house back together, which is the part he genuinely enjoys.</p>
       <p>The projects page exists because that work is the real credential. Anyone can put "trusted local buyer" on a website. Fewer people can show you forty houses they bought in bad shape and rebuilt.</p>
@@ -154,6 +169,8 @@
       <div class="side-card">
         <h4>At a Glance</h4>
         <ul>
+          <li>Raised in Melbourne, Florida</li>
+          <li>University of Central Florida graduate</li>
           <li>U.S. Army infantry combat veteran</li>
           <li>Based in Orlando, Florida</li>
           <li>Buys across six Central Florida counties</li>
