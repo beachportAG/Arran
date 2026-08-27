@@ -14,13 +14,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=2">
+<link rel="stylesheet" href="../styles.css?v=4">
 <style>
-.page-hero { background: var(--ink); position: relative; overflow: hidden; }
-.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 30%, rgba(212,136,63,0.15) 0%, transparent 58%), linear-gradient(160deg, #1b2925 0%, #16211d 100%); }
+.page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(124,138,15,0.10) 0%, transparent 60%); }
 .page-hero-inner { position: relative; z-index: 1; max-width: 1220px; margin: 0 auto; padding: 64px 40px 68px; }
-.page-hero h1 { font-weight: 800; font-size: clamp(32px, 4.2vw, 50px); color: var(--white); line-height: 1.08; letter-spacing: -0.8px; margin-bottom: 16px; }
-.page-hero .ph-sub { font-size: 16.5px; color: rgba(255,255,255,0.66); font-weight: 300; line-height: 1.8; max-width: 640px; }
+.page-hero h1 { font-weight: 800; font-size: clamp(32px, 4.2vw, 50px); color: var(--ink); line-height: 1.08; letter-spacing: -0.8px; margin-bottom: 16px; }
+.page-hero .ph-sub { font-size: 16.5px; color: var(--text-light); font-weight: 300; line-height: 1.8; max-width: 640px; }
 .page-hero .ph-cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
 .split > * { min-width: 0; }
@@ -28,32 +28,32 @@
 .prose p:last-child { margin-bottom: 0; }
 .prose strong { color: var(--ink); font-weight: 700; }
 .val-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
-.val-card { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--amber); border-radius: 14px; padding: 28px 26px; }
+.val-card { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 14px; padding: 28px 26px; }
 .val-card h3 { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.2px; }
 .val-card p { font-size: 13.8px; color: var(--text-light); line-height: 1.75; font-weight: 300; }
-.side-card { background: var(--cream); border: 1px solid var(--line); border-left: 3px solid var(--amber); border-radius: 12px; padding: 24px 26px; margin-bottom: 16px; }
+.side-card { background: var(--cream); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px; padding: 24px 26px; margin-bottom: 16px; }
 .side-card h4 { font-size: 12px; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; }
 .side-card p { font-size: 13.5px; color: var(--text-light); line-height: 1.75; font-weight: 300; }
 .side-card ul { list-style: none; }
 .side-card li { font-size: 13.5px; color: var(--text-light); padding: 6px 0; display: flex; gap: 10px; line-height: 1.55; font-weight: 300; }
-.side-card li::before { content: '\2014'; color: var(--amber); font-weight: 700; flex-shrink: 0; }
+.side-card li::before { content: '\2014'; color: var(--accent-deep); font-weight: 700; flex-shrink: 0; }
 .box-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 44px; }
 .box { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 28px 28px; }
-.box h3 { font-size: 15px; font-weight: 800; color: var(--ink); text-transform: uppercase; letter-spacing: 0.7px; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px solid var(--amber); }
+.box h3 { font-size: 15px; font-weight: 800; color: var(--ink); text-transform: uppercase; letter-spacing: 0.7px; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px solid var(--accent); }
 .box ul { list-style: none; }
 .box li { font-size: 14px; color: var(--text-light); padding: 8px 0; display: flex; gap: 11px; line-height: 1.6; font-weight: 300; }
 .box li::before { content: '\2713'; color: var(--green-go); font-weight: 800; flex-shrink: 0; }
 .box.no li::before { content: '\2715'; color: #c25b5b; }
 .faq-list { margin-top: 40px; max-width: 880px; }
 .faq-item { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; background: var(--white); transition: border-color 0.25s; }
-.faq-item.open { border-color: rgba(212,136,63,0.55); }
+.faq-item.open { border-color: rgba(124,138,15,0.55); }
 .faq-q { width: 100%; text-align: left; background: none; border: none; font-family: 'Inter', sans-serif; font-size: 15.5px; font-weight: 700; color: var(--ink); padding: 19px 56px 19px 24px; cursor: pointer; position: relative; line-height: 1.45; }
-.faq-q::after { content: ''; position: absolute; right: 24px; top: 50%; width: 8px; height: 8px; border-right: 2px solid var(--amber); border-bottom: 2px solid var(--amber); transform: translateY(-70%) rotate(45deg); transition: transform 0.3s ease; }
+.faq-q::after { content: ''; position: absolute; right: 24px; top: 50%; width: 8px; height: 8px; border-right: 2px solid var(--accent-deep); border-bottom: 2px solid var(--accent-deep); transform: translateY(-70%) rotate(45deg); transition: transform 0.3s ease; }
 .faq-item.open .faq-q::after { transform: translateY(-25%) rotate(-135deg); }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 24px; }
 .faq-item.open .faq-a { max-height: 420px; padding: 0 24px 20px; }
 .faq-a p { font-size: 14.5px; color: var(--text-light); line-height: 1.8; font-weight: 300; }
-.partner-form { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--amber); border-radius: 16px; padding: 32px 30px; box-shadow: 0 10px 40px rgba(22,33,29,0.07); }
+.partner-form { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 16px; padding: 32px 30px; box-shadow: 0 10px 40px rgba(22,33,29,0.07); }
 .partner-form h2 { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.3px; }
 .partner-form .pf-sub { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; line-height: 1.6; }
 .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
