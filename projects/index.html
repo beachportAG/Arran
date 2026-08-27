@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Projects | Houses We've Bought &amp; Rebuilt in Central Florida</title>
+<meta name="description" content="Before and after photos of Orlando-area houses we bought as-is for cash and renovated. Real properties, real timelines, real transformations.">
+<link rel="canonical" href="https://arranbuyshomes.com/projects/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arranbuyshomes.com/projects/">
+<meta property="og:site_name" content="Arran Buys Homes">
+<meta property="og:title" content="Our Projects | Arran Buys Homes">
+<meta property="og:description" content="Before and after photos of Orlando-area houses we bought as-is for cash and renovated.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* ===== PAGE HERO ===== */
+.page-hero { background: var(--ink); position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 30%, rgba(212,136,63,0.15) 0%, transparent 58%), linear-gradient(160deg, #1b2925 0%, #16211d 100%); }
+.page-hero-inner { position: relative; z-index: 1; max-width: 1220px; margin: 0 auto; padding: 64px 40px 68px; }
+.page-hero h1 { font-weight: 800; font-size: clamp(32px, 4.2vw, 50px); color: var(--white); line-height: 1.08; letter-spacing: -0.8px; margin-bottom: 16px; }
+.page-hero p { font-size: 16.5px; color: rgba(255,255,255,0.66); font-weight: 300; line-height: 1.8; max-width: 640px; }
+
+/* ===== STAT ROW ===== */
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; margin-top: 38px; max-width: 720px; }
+.stat { background: var(--ink-mid); padding: 20px 22px; }
+.stat b { display: block; font-size: 27px; font-weight: 800; color: var(--amber); line-height: 1.1; letter-spacing: -0.6px; }
+.stat span { font-size: 11.5px; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 0.9px; text-transform: uppercase; }
+
+/* ===== FILTERS ===== */
+.filters { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 40px; }
+.filter-chip { background: var(--white); border: 1px solid var(--line); color: var(--text-light); font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: 0.4px; padding: 9px 18px; border-radius: 50px; cursor: pointer; transition: background 0.22s, color 0.22s, border-color 0.22s; }
+.filter-chip:hover { border-color: var(--amber); color: var(--ink); }
+.filter-chip.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+
+/* ===== PROJECT LIST ===== */
+.pj-list { display: grid; gap: 26px; }
+.pj {
+  display: grid; grid-template-columns: 1.35fr 1fr; gap: 0;
+  border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  background: var(--white); transition: box-shadow 0.3s, opacity 0.25s;
+}
+.pj:hover { box-shadow: 0 14px 46px rgba(22,33,29,0.11); }
+.pj.hide { display: none; }
+.pj > * { min-width: 0; }
+.pj-info { padding: 34px 34px 32px; display: flex; flex-direction: column; justify-content: center; }
+.pj-loc { font-size: 11.5px; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
+.pj-info h2 { font-size: 23px; font-weight: 800; color: var(--ink); letter-spacing: -0.4px; line-height: 1.2; margin-bottom: 14px; }
+.pj-info p { font-size: 14.5px; color: var(--text-light); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
+.pj-facts { display: flex; gap: 26px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--line); }
+.pj-fact b { display: block; font-size: 15px; font-weight: 800; color: var(--ink); line-height: 1.3; }
+.pj-fact span { font-size: 10.5px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; color: var(--text-light); }
+
+/* ===== BEFORE / AFTER SLIDER ===== */
+.ba { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream-dk); cursor: ew-resize; user-select: none; touch-action: pan-y; --pos: 50%; }
+.ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.ba .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); z-index: 2; }
+.ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; background: var(--white); z-index: 3; pointer-events: none; box-shadow: 0 0 14px rgba(0,0,0,0.4); }
+.ba-handle::after {
+  content: '\2194';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--white); color: var(--ink);
+  font-size: 17px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.32);
+}
+.ba-tag { position: absolute; top: 14px; z-index: 4; font-size: 10px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; padding: 6px 12px; border-radius: 50px; pointer-events: none; }
+.ba-tag-l { left: 14px; background: rgba(22,33,29,0.86); color: var(--white); }
+.ba-tag-r { right: 14px; background: rgba(212,136,63,0.94); color: var(--white); }
+.ba-hint { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 4; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: var(--white); background: rgba(22,33,29,0.62); padding: 6px 14px; border-radius: 50px; pointer-events: none; transition: opacity 0.4s; }
+.ba.touched .ba-hint { opacity: 0; }
+
+/* ===== SINGLE PHOTO ===== */
+.pj-single { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream-dk); }
+.pj-single img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pj-single .ba-tag-r { right: 14px; }
+
+/* ===== ADD-MORE NOTE ===== */
+.more-note { margin-top: 46px; background: var(--cream); border: 1px dashed var(--line); border-radius: 14px; padding: 28px 30px; text-align: center; }
+.more-note p { font-size: 14.5px; color: var(--text-light); font-weight: 300; line-height: 1.8; }
+
+@media (max-width: 860px) {
+  .page-hero-inner { padding: 46px 22px 50px; }
+  .page-hero h1 { font-size: 30px; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .pj { grid-template-columns: 1fr; }
+  .pj-info { padding: 24px 22px 26px; }
+  .pj-info h2 { font-size: 20px; }
+  .filters { gap: 7px; margin-bottom: 28px; }
+  .filter-chip { font-size: 12px; padding: 8px 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <a href="../" class="logo">Arran <span>Buys Homes</span></a>
+  <a href="tel:3216048481" class="header-phone-mobile">(321) 604-8481</a>
+  <nav>
+    <a href="../#how">How It Works</a>
+    <a href="../projects/" style="color:#fff;">Projects</a>
+    <a href="../about/">About</a>
+    <a href="tel:3216048481" class="nav-phone">(321) 604-8481</a>
+    <a href="../#offer" class="nav-cta">Get My Cash Offer</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="../#how">How It Works</a>
+  <a href="../projects/" style="color:#fff;">Projects</a>
+  <a href="../about/">About</a>
+  <a href="../agents/">For Agents</a>
+  <a href="../wholesalers/">For Wholesalers</a>
+  <a href="#" onclick="openMobileForm(); return false;" class="mobile-cta">Get My Cash Offer</a>
+</div>
+
+<!-- ===== MOBILE STICKY BAR ===== -->
+<div class="mobile-consult-bar">
+  <a href="tel:3216048481" class="mcb-call" aria-label="Call now">&#9742;</a>
+  <button onclick="openMobileForm()">Get My Cash Offer</button>
+</div>
+<div class="mobile-form-panel-overlay" id="mobileFormOverlay" onclick="closeMobileForm()"></div>
+<div class="mobile-form-panel" id="mobileFormPanel">
+  <button class="mobile-form-panel-close" onclick="closeMobileForm()" aria-label="Close">&#10005;</button>
+  <h2 style="font-size:20px;font-weight:800;color:var(--ink);margin-bottom:6px;">Get Your Cash Offer</h2>
+  <p style="font-size:13.5px;color:var(--text-light);margin-bottom:20px;">No obligation. No fees. We'll call you back the same day.</p>
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" autocomplete="off">
+    <input type="hidden" name="_subject" value="Cash Offer Request - Arran Buys Homes">
+    <label for="m-address">Property Address</label>
+    <input type="text" id="m-address" name="address" placeholder="123 Main St, Orlando FL" required autocomplete="new-password">
+    <label for="m-name">Your Name</label>
+    <input type="text" id="m-name" name="name" placeholder="Jane Smith" required autocomplete="new-password">
+    <label for="m-phone">Phone</label>
+    <input type="tel" id="m-phone" name="phone" placeholder="(407) 555-0100" required autocomplete="new-password">
+    <label for="m-email">Email</label>
+    <input type="email" id="m-email" name="email" placeholder="jane@example.com" autocomplete="new-password">
+    <button type="submit">Get My Cash Offer</button>
+    <p class="form-fine">By submitting you agree to be contacted about your property. We never sell your information.</p>
+  </form>
+</div>
+
+<main>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="section-label">Our Work</p>
+    <h1>Houses nobody wanted.<br>Rebuilt from the studs.</h1>
+    <p>Every property below was bought as-is, in cash, directly from an owner who needed out. No agents, no listings, no repairs asked of the seller. Drag the sliders to see what changed.</p>
+    <div class="stat-row">
+      <div class="stat"><b>40+</b><span>Homes Bought</span></div>
+      <div class="stat"><b>14</b><span>Avg. Days to Close</span></div>
+      <div class="stat"><b>6</b><span>Counties Served</span></div>
+      <div class="stat"><b>$0</b><span>Seller Fees</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="section">
+
+  <div class="filters" id="filters">
+    <button class="filter-chip active" data-filter="all">All Projects</button>
+    <button class="filter-chip" data-filter="orange">Orange</button>
+    <button class="filter-chip" data-filter="seminole">Seminole</button>
+    <button class="filter-chip" data-filter="osceola">Osceola</button>
+    <button class="filter-chip" data-filter="lake">Lake</button>
+    <button class="filter-chip" data-filter="polk">Polk</button>
+    <button class="filter-chip" data-filter="brevard">Brevard</button>
+  </div>
+
+  <div class="pj-list" id="pjList">
+
+    <!-- ===== PROJECT 1 — BEFORE/AFTER ===== -->
+    <article class="pj" data-county="orange">
+      <div class="ba" data-ba>
+        <img class="ba-after" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23dcd4c6' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%23a09788' text-anchor='middle'%3EAFTER PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%23b5ab9c' text-anchor='middle'%3Eimages/projects/pine-hills-after.jpg%3C/text%3E%3C/svg%3E" alt="Pine Hills Orlando kitchen after full renovation">
+        <img class="ba-before" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23b3aa9c' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%236f685c' text-anchor='middle'%3EBEFORE PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%237f776a' text-anchor='middle'%3Eimages/projects/pine-hills-before.jpg%3C/text%3E%3C/svg%3E" alt="Pine Hills Orlando kitchen before renovation">
+        <div class="ba-handle"></div>
+        <span class="ba-tag ba-tag-l">Before</span>
+        <span class="ba-tag ba-tag-r">After</span>
+        <span class="ba-hint">Drag to compare</span>
+      </div>
+      <div class="pj-info">
+        <p class="pj-loc">Pine Hills &middot; Orange County</p>
+        <h2>Inherited and Untouched for 30 Years</h2>
+        <p>Two siblings inherited their mother's house and lived four states away. It hadn't been updated since the eighties, the roof was failing, and it was still full of her belongings. Neither of them wanted to fly down to clean it out. We bought it as-is, handled the cleanout ourselves, and closed before the next tax bill came due.</p>
+        <div class="pj-facts">
+          <div class="pj-fact"><b>12 days</b><span>Close Time</span></div>
+          <div class="pj-fact"><b>Probate</b><span>Situation</span></div>
+          <div class="pj-fact"><b>As-Is</b><span>Condition</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== PROJECT 2 — BEFORE/AFTER ===== -->
+    <article class="pj" data-county="osceola">
+      <div class="ba" data-ba>
+        <img class="ba-after" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23dcd4c6' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%23a09788' text-anchor='middle'%3EAFTER PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%23b5ab9c' text-anchor='middle'%3Eimages/projects/kissimmee-after.jpg%3C/text%3E%3C/svg%3E" alt="Kissimmee rental property after renovation">
+        <img class="ba-before" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23b3aa9c' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%236f685c' text-anchor='middle'%3EBEFORE PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%237f776a' text-anchor='middle'%3Eimages/projects/kissimmee-before.jpg%3C/text%3E%3C/svg%3E" alt="Kissimmee rental property before renovation, damaged by tenants">
+        <div class="ba-handle"></div>
+        <span class="ba-tag ba-tag-l">Before</span>
+        <span class="ba-tag ba-tag-r">After</span>
+        <span class="ba-hint">Drag to compare</span>
+      </div>
+      <div class="pj-info">
+        <p class="pj-loc">Kissimmee &middot; Osceola County</p>
+        <h2>Landlord Done Being a Landlord</h2>
+        <p>Owner had tenants four months behind on rent who wouldn't respond to anything. He'd already spent money on an attorney and just wanted it gone. We bought it occupied, which meant he never had to run the eviction himself or make a single repair.</p>
+        <div class="pj-facts">
+          <div class="pj-fact"><b>9 days</b><span>Close Time</span></div>
+          <div class="pj-fact"><b>Occupied</b><span>Situation</span></div>
+          <div class="pj-fact"><b>Heavy</b><span>Repairs</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== PROJECT 3 — FINISHED ONLY ===== -->
+    <article class="pj" data-county="lake">
+      <div class="pj-single">
+        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23dcd4c6' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%23a09788' text-anchor='middle'%3EFINISHED PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%23b5ab9c' text-anchor='middle'%3Eimages/projects/mount-dora.jpg%3C/text%3E%3C/svg%3E" alt="Restored Mount Dora bungalow exterior">
+        <span class="ba-tag ba-tag-r">Completed</span>
+      </div>
+      <div class="pj-info">
+        <p class="pj-loc">Mount Dora &middot; Lake County</p>
+        <h2>Job Transfer With Three Weeks' Notice</h2>
+        <p>Owner accepted a position in North Carolina and had to be there by the first of the month. Listing it meant carrying two mortgages for an unknown number of months. She picked her closing date, we worked around it, and she left with the house behind her.</p>
+        <div class="pj-facts">
+          <div class="pj-fact"><b>21 days</b><span>Close Time</span></div>
+          <div class="pj-fact"><b>Relocation</b><span>Situation</span></div>
+          <div class="pj-fact"><b>Cosmetic</b><span>Repairs</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== PROJECT 4 — BEFORE/AFTER ===== -->
+    <article class="pj" data-county="polk">
+      <div class="ba" data-ba>
+        <img class="ba-after" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23dcd4c6' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%23a09788' text-anchor='middle'%3EAFTER PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%23b5ab9c' text-anchor='middle'%3Eimages/projects/lakeland-after.jpg%3C/text%3E%3C/svg%3E" alt="Lakeland home after storm damage repair and renovation">
+        <img class="ba-before" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23b3aa9c' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%236f685c' text-anchor='middle'%3EBEFORE PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%237f776a' text-anchor='middle'%3Eimages/projects/lakeland-before.jpg%3C/text%3E%3C/svg%3E" alt="Lakeland home before repair, showing storm damage">
+        <div class="ba-handle"></div>
+        <span class="ba-tag ba-tag-l">Before</span>
+        <span class="ba-tag ba-tag-r">After</span>
+        <span class="ba-hint">Drag to compare</span>
+      </div>
+      <div class="pj-info">
+        <p class="pj-loc">Lakeland &middot; Polk County</p>
+        <h2>Storm Damage the Insurance Didn't Cover</h2>
+        <p>Water intrusion after a hurricane turned into mold, and the claim came back well short of what the repairs actually cost. The owner didn't have the cash to fix it and couldn't list it in that condition. We took the whole problem off her hands.</p>
+        <div class="pj-facts">
+          <div class="pj-fact"><b>16 days</b><span>Close Time</span></div>
+          <div class="pj-fact"><b>Storm Damage</b><span>Situation</span></div>
+          <div class="pj-fact"><b>Full Gut</b><span>Repairs</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== PROJECT 5 — FINISHED ONLY ===== -->
+    <article class="pj" data-county="seminole">
+      <div class="pj-single">
+        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23dcd4c6' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%23a09788' text-anchor='middle'%3EFINISHED PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%23b5ab9c' text-anchor='middle'%3Eimages/projects/sanford.jpg%3C/text%3E%3C/svg%3E" alt="Renovated Sanford home interior">
+        <span class="ba-tag ba-tag-r">Completed</span>
+      </div>
+      <div class="pj-info">
+        <p class="pj-loc">Sanford &middot; Seminole County</p>
+        <h2>Two Failed Contracts Before Us</h2>
+        <p>Already under contract twice, and both buyers' financing collapsed after inspection. By the time the owner called us he'd lost four months and was skeptical anyone would actually close. No lender on our side meant nothing to fall through.</p>
+        <div class="pj-facts">
+          <div class="pj-fact"><b>11 days</b><span>Close Time</span></div>
+          <div class="pj-fact"><b>Failed Listing</b><span>Situation</span></div>
+          <div class="pj-fact"><b>Moderate</b><span>Repairs</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== PROJECT 6 — BEFORE/AFTER ===== -->
+    <article class="pj" data-county="brevard">
+      <div class="ba" data-ba>
+        <img class="ba-after" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23dcd4c6' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%23a09788' text-anchor='middle'%3EAFTER PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%23b5ab9c' text-anchor='middle'%3Eimages/projects/palm-bay-after.jpg%3C/text%3E%3C/svg%3E" alt="Palm Bay home after cleanout and renovation">
+        <img class="ba-before" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23b3aa9c' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%236f685c' text-anchor='middle'%3EBEFORE PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%237f776a' text-anchor='middle'%3Eimages/projects/palm-bay-before.jpg%3C/text%3E%3C/svg%3E" alt="Palm Bay home before cleanout, full of belongings">
+        <div class="ba-handle"></div>
+        <span class="ba-tag ba-tag-l">Before</span>
+        <span class="ba-tag ba-tag-r">After</span>
+        <span class="ba-hint">Drag to compare</span>
+      </div>
+      <div class="pj-info">
+        <p class="pj-loc">Palm Bay &middot; Brevard County</p>
+        <h2>Code Violations and a Foreclosure Date</h2>
+        <p>Open code enforcement cases, mounting daily fines, and a foreclosure sale already on the calendar. Most buyers walk when they see that combination. We cleared the violations through the title company and closed with two weeks to spare.</p>
+        <div class="pj-facts">
+          <div class="pj-fact"><b>19 days</b><span>Close Time</span></div>
+          <div class="pj-fact"><b>Pre-Foreclosure</b><span>Situation</span></div>
+          <div class="pj-fact"><b>Liens Cleared</b><span>Title</span></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="more-note">
+    <p>These are a sample. Arran has bought and rebuilt houses across all six counties, in nearly every condition and situation you can imagine. If yours feels like it belongs on this page, that's a good sign we should talk.</p>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <a href="../#offer" class="btn-primary" onclick="if(window.innerWidth<=860){openMobileForm();return false;}">Get My Cash Offer</a>
+  </div>
+
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="back-to-top">
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593; &nbsp; Back to Top</button>
+    </div>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../" class="logo">Arran <span>Buys Homes</span></a>
+        <p>A local cash home buyer serving Orlando and Central Florida. We buy houses as-is, in any condition and any situation, with no fees and no repairs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sellers</h4>
+        <ul>
+          <li><a href="../#how">How It Works</a></li>
+          <li><a href="../projects/">Our Projects</a></li>
+          <li><a href="../about/">About Arran</a></li>
+          <li><a href="../#contact">Get an Offer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="../agents/">For Real Estate Agents</a></li>
+          <li><a href="../wholesalers/">For Wholesalers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <a href="tel:3216048481">(321) 604-8481</a><br>
+          <a href="mailto:arranbuyshouses@gmail.com">arranbuyshouses@gmail.com</a><br>
+          <br>
+          Orlando, Florida<br>
+          <span style="font-size:11.5px;color:rgba(255,255,255,0.26);">Serving Central Florida</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">Arran Buys Homes is a real estate investment company that purchases, renovates, and resells or rents properties. We are not real estate agents or brokers and do not provide brokerage services, legal advice, tax advice, or financial advice. Project photos depict properties actually purchased and renovated by us. Individual results vary by property, condition, and market.</p>
+      <p class="footer-copy">&copy; 2026 Arran Buys Homes</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* HAMBURGER */
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+var isOpen = false;
+hamburger.addEventListener('click', function () {
+  isOpen = !isOpen;
+  hamburger.classList.toggle('open', isOpen);
+  mobileMenu.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+  mobileMenu.setAttribute('aria-hidden', !isOpen);
+});
+mobileMenu.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    isOpen = false;
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+/* MOBILE FORM PANEL */
+var _scrollY = 0;
+function openMobileForm() {
+  _scrollY = window.scrollY;
+  document.getElementById('mobileFormPanel').classList.add('open');
+  document.getElementById('mobileFormOverlay').classList.add('open');
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + _scrollY + 'px';
+  document.body.style.width = '100%';
+}
+function closeMobileForm() {
+  document.getElementById('mobileFormPanel').classList.remove('open');
+  document.getElementById('mobileFormOverlay').classList.remove('open');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, _scrollY);
+}
+
+/* BEFORE / AFTER SLIDERS */
+document.querySelectorAll('[data-ba]').forEach(function (ba) {
+  var dragging = false;
+  function setPos(clientX) {
+    var r = ba.getBoundingClientRect();
+    var pct = ((clientX - r.left) / r.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    ba.style.setProperty('--pos', pct + '%');
+    ba.classList.add('touched');
+  }
+  ba.addEventListener('pointerdown', function (e) {
+    dragging = true;
+    ba.setPointerCapture(e.pointerId);
+    setPos(e.clientX);
+  });
+  ba.addEventListener('pointermove', function (e) {
+    if (dragging) setPos(e.clientX);
+  });
+  ba.addEventListener('pointerup', function () { dragging = false; });
+  ba.addEventListener('pointercancel', function () { dragging = false; });
+  /* Also reveal on hover for mouse users who don't think to drag */
+  ba.addEventListener('mousemove', function (e) {
+    if (!dragging && e.buttons === 0 && window.matchMedia('(hover: hover)').matches) setPos(e.clientX);
+  });
+});
+
+/* COUNTY FILTER */
+document.querySelectorAll('.filter-chip').forEach(function (chip) {
+  chip.addEventListener('click', function () {
+    document.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
+    this.classList.add('active');
+    var f = this.dataset.filter;
+    document.querySelectorAll('.pj').forEach(function (pj) {
+      pj.classList.toggle('hide', f !== 'all' && pj.dataset.county !== f);
+    });
+  });
+});
+
+/* FORM SUBMIT */
+document.querySelectorAll('form[action*="formspree"]').forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var original = btn.textContent;
+    var data = {};
+    form.querySelectorAll('input, textarea, select').forEach(function (el) { if (el.name) data[el.name] = el.value; });
+    var missing = false;
+    form.querySelectorAll('[required]').forEach(function (el) {
+      if (!el.value.trim()) { missing = true; el.style.borderColor = '#c25b5b'; } else el.style.borderColor = '';
+    });
+    if (missing) return;
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      if (r.ok) { btn.textContent = 'Sent — we’ll call you shortly'; form.reset(); }
+      else { btn.disabled = false; btn.textContent = original; alert('Something went wrong. Please call or text us at (321) 604-8481.'); }
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = original; alert('Something went wrong. Please call or text us at (321) 604-8481.');
+    });
+  });
+});
+</script>
+</body>
+</html>
