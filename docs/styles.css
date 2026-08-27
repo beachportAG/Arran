@@ -39,14 +39,15 @@ header {
   height: 72px;
   box-shadow: 0 1px 12px rgba(43,50,56,0.06);
 }
-.logo { color: var(--ink); text-decoration: none; font-weight: 800; font-size: 17px; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.1; transition: color 0.25s; }
-.logo span { color: var(--accent-deep); transition: color 0.25s; }
-/* both halves move together on hover */
-.logo:hover, .logo:hover span { color: var(--accent-dk); }
+.logo { color: var(--white); text-decoration: none; font-weight: 800; font-size: 17px; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.1; transition: color 0.25s, background 0.25s; }
+.logo span { color: var(--accent); transition: color 0.25s; }
 
-/* Footer sits on dark, so the lockup inverts: white name, yellow tagline */
-footer .logo { color: var(--white); }
-footer .logo span { color: var(--accent); }
+/* On the white header the lockup becomes a charcoal chip, same as the yard sign */
+header .logo { background: var(--ink); padding: 9px 15px; border-radius: 8px; display: inline-block; }
+header .logo:hover { background: #1c2226; }
+header .logo:hover span { color: var(--accent-dk); }
+
+/* Footer is already dark, so the lockup sits on it directly */
 footer .logo:hover, footer .logo:hover span { color: var(--accent); }
 nav { display: flex; gap: 26px; align-items: center; }
 nav a { color: var(--text-light); text-decoration: none; font-size: 13.5px; font-weight: 500; letter-spacing: 0.3px; transition: color 0.25s; }
@@ -285,6 +286,7 @@ form button:disabled { opacity: 0.75; cursor: default; }
 .compare-wrap { margin-top: 46px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--white); }
 .compare-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .compare-table th, .compare-table td { width: 50%; }
+.th-short { display: none; }
 .compare-table th { padding: 20px 24px; font-size: 13px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; text-align: left; }
 .compare-table th.us { background: var(--ink); color: var(--white); }
 .compare-table th.them { background: var(--cream-dk); color: var(--text-light); }
@@ -367,7 +369,7 @@ form button:disabled { opacity: 0.75; cursor: default; }
 /* ===== FOOTER ===== */
 footer { background: #08201f; padding: 60px 40px 26px; }
 .footer-inner { max-width: 1220px; margin: 0 auto; }
-.footer-top { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 42px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 26px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 42px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 26px; }
 .footer-brand .logo { display: block; margin-bottom: 15px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 300px; }
 .footer-col h4 { font-size: 10.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: rgba(255,255,255,0.48); margin-bottom: 16px; }
@@ -392,14 +394,15 @@ footer { background: #08201f; padding: 60px 40px 26px; }
 @media (max-width: 860px) {
   nav { display: none; }
   .hamburger { display: flex; }
-  header { padding: 0 20px; }
+  header { padding: 0 16px; }
+  header .logo { font-size: 15px; padding: 8px 12px; letter-spacing: 1.2px; }
   .header-phone-mobile { display: block; color: var(--accent-deep); text-decoration: none; font-size: 14px; font-weight: 800; letter-spacing: 0.3px; margin-left: auto; margin-right: 14px; }
   /* No autoplay video over cell data. Show the poster still instead. */
   .hero-video { display: none; }
   .hero {
-    background-image: url('images/hero-poster.jpg');
+    background-image: url('images/hero-mobile.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center 22%;
   }
   .hero::before {
     background:
@@ -427,6 +430,8 @@ footer { background: #08201f; padding: 60px 40px 26px; }
   .final-cta .final-inner { grid-template-columns: 1fr; gap: 0; padding: 60px 22px; }
   .final-form-wrap { display: none; }
   .compare-table th, .compare-table td { padding: 13px 15px; font-size: 13px; }
+  .th-long { display: none; }
+  .th-short { display: inline; }
   .mobile-consult-bar { display: flex !important; }
   .mobile-form-panel { display: block !important; }
   body { padding-bottom: 70px; }
