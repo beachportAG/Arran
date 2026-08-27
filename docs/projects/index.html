@@ -14,11 +14,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=4">
+<link rel="stylesheet" href="../styles.css?v=9">
 <style>
 /* ===== PAGE HERO ===== */
 .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
-.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(124,138,15,0.10) 0%, transparent 60%); }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(138,116,7,0.10) 0%, transparent 60%); }
 .page-hero-inner { position: relative; z-index: 1; max-width: 1220px; margin: 0 auto; padding: 64px 40px 68px; }
 .page-hero h1 { font-weight: 800; font-size: clamp(32px, 4.2vw, 50px); color: var(--ink); line-height: 1.08; letter-spacing: -0.8px; margin-bottom: 16px; }
 .page-hero p { font-size: 16.5px; color: var(--text-light); font-weight: 300; line-height: 1.8; max-width: 640px; }
@@ -103,7 +103,7 @@
   <a href="tel:3216048481" class="header-phone-mobile">(321) 604-8481</a>
   <nav>
     <a href="../#how">How It Works</a>
-    <a href="../projects/" style="color:#fff;">Projects</a>
+    <a href="../projects/" class="nav-active">Projects</a>
     <a href="../about/">About</a>
     <a href="tel:3216048481" class="nav-phone">(321) 604-8481</a>
     <a href="../#offer" class="nav-cta">Get My Cash Offer</a>
@@ -116,7 +116,7 @@
 <!-- ===== MOBILE MENU ===== -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a href="../#how">How It Works</a>
-  <a href="../projects/" style="color:#fff;">Projects</a>
+  <a href="../projects/" class="nav-active">Projects</a>
   <a href="../about/">About</a>
   <a href="../agents/">For Agents</a>
   <a href="../wholesalers/">For Wholesalers</a>
