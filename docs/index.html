@@ -132,7 +132,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="styles.css?v=29">
 </head>
 <body>
 
@@ -694,6 +694,20 @@ document.querySelectorAll('.faq-q').forEach(function (q) {
     this.parentElement.classList.toggle('open');
   });
 });
+
+
+/* BENEFITS ACCORDION (phones only) */
+if (window.matchMedia('(max-width: 860px)').matches) {
+  document.querySelectorAll('.benefit-card').forEach(function (card) {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    function toggle() { card.classList.toggle('open'); }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+}
 
 /* FORM SUBMIT — AJAX, also fixes iOS autofill not serializing on native POST */
 document.querySelectorAll('form[action*="formspree"]').forEach(function (form) {
