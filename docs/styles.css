@@ -397,13 +397,13 @@ footer { background: #08201f; padding: 60px 40px 26px; }
   header { padding: 0 16px; }
   header .logo { font-size: 15px; padding: 8px 12px; letter-spacing: 1.2px; }
   .header-phone-mobile { display: block; color: var(--accent-deep); text-decoration: none; font-size: 14px; font-weight: 800; letter-spacing: 0.3px; margin-left: auto; margin-right: 14px; }
-  /* No autoplay video over cell data. Show the poster still instead. */
-  .hero-video { display: none; }
+  /* Portrait video on phones, still frame behind it if video can't play */
   .hero {
-    background-image: url('images/hero-mobile.jpg');
+    background-image: url('images/hero-mobile-poster.jpg');
     background-size: cover;
-    background-position: center 22%;
+    background-position: center;
   }
+  .hero-video { object-position: center 30%; }
   .hero::before {
     background:
       radial-gradient(ellipse at 15% 20%, rgba(138,116,7,0.14) 0%, transparent 55%),
