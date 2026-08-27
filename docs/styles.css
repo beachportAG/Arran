@@ -120,8 +120,8 @@ nav a.nav-active { color: var(--ink); font-weight: 700; border-bottom: 2px solid
 .hero-inner > * { min-width: 0; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 700; letter-spacing: 2.6px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
 .hero-eyebrow::before { content: ''; width: 26px; height: 2px; background: var(--accent); }
-.hero h1 { font-weight: 800; font-size: clamp(36px, 4.6vw, 58px); line-height: 1.06; letter-spacing: -0.8px; color: var(--white); margin-bottom: 20px; }
-.hero h1 em { font-style: normal; color: var(--accent); }
+.hero h1, .city-hero h1 { font-weight: 800; font-size: clamp(36px, 4.6vw, 58px); line-height: 1.06; letter-spacing: -0.8px; color: var(--white); margin-bottom: 20px; }
+.hero h1 em, .city-hero h1 em { font-style: normal; color: var(--accent); }
 .hero-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.72); line-height: 1.75; max-width: 500px; margin-bottom: 30px; }
 .hero-points { list-style: none; display: grid; gap: 11px; margin-bottom: 34px; max-width: 480px; }
 .hero-points li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: rgba(255,255,255,0.86); font-weight: 400; line-height: 1.5; }
@@ -399,6 +399,9 @@ footer { background: #08201f; padding: 60px 40px 26px; }
     background:
       radial-gradient(ellipse at 15% 20%, rgba(138,116,7,0.14) 0%, transparent 55%),
       linear-gradient(to bottom, rgba(24,28,31,0.80) 0%, rgba(24,28,31,0.92) 100%);
+  }
+  .city-hero::before {
+    background: linear-gradient(to bottom, rgba(24,28,31,0.80) 0%, rgba(24,28,31,0.93) 100%);
   }
   .hero-inner { grid-template-columns: 1fr; gap: 0; padding: 46px 22px 54px; }
   .hero-form-wrap { display: none; }
