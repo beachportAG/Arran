@@ -23,11 +23,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=38">
 <style>
-.page-hero { background: var(--cream); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
-.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(138,116,7,0.10) 0%, transparent 60%); }
-.page-hero-inner { position: relative; z-index: 1; max-width: 1220px; margin: 0 auto; padding: 64px 40px 68px; }
-.page-hero h1 { font-weight: 800; font-size: clamp(32px, 4.2vw, 50px); color: var(--ink); line-height: 1.08; letter-spacing: -0.8px; margin-bottom: 16px; }
-.page-hero .ph-sub { font-size: 16.5px; color: var(--text-light); font-weight: 300; line-height: 1.8; max-width: 640px; }
+.page-hero { background: var(--ink); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(100deg, rgba(24,28,31,0.90) 0%, rgba(24,28,31,0.78) 40%, rgba(24,28,31,0.52) 75%, rgba(24,28,31,0.38) 100%); }
+.page-hero-inner { position: relative; z-index: 2; max-width: 1220px; margin: 0 auto; padding: 64px 40px 68px; }
+.page-hero h1 { font-weight: 800; font-size: clamp(32px, 4.2vw, 50px); color: var(--white); text-shadow: 0 2px 18px rgba(0,0,0,0.55); line-height: 1.08; letter-spacing: -0.8px; margin-bottom: 16px; }
+.page-hero .ph-sub { font-size: 16.5px; color: rgba(255,255,255,0.80); text-shadow: 0 1px 10px rgba(0,0,0,0.5); font-weight: 300; line-height: 1.8; max-width: 640px; }
+.page-hero .section-label { color: var(--accent); }
+.page-hero .btn-ghost-light { border-color: rgba(255,255,255,0.55); color: var(--white); }
+.page-hero .btn-ghost-light:hover { background: var(--white); color: var(--ink); }
 .page-hero .ph-cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
 .split > * { min-width: 0; }
@@ -181,6 +184,20 @@
 <main>
 
 <section class="page-hero">
+  <video class="hero-video" id="abVideo" autoplay muted loop playsinline preload="auto"
+         poster="../images/arran-intro-hero-poster.jpg" aria-hidden="true" tabindex="-1"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"></video>
+  <script>
+  (function () {
+    var v = document.getElementById('abVideo');
+    var small = window.matchMedia('(max-width: 860px)').matches;
+    v.poster = small ? '../images/arran-intro-hero-mobile-poster.jpg' : '../images/arran-intro-hero-poster.jpg';
+    var src = document.createElement('source');
+    src.src = small ? '../images/arran-intro-hero-mobile.mp4' : '../images/arran-intro-hero.mp4';
+    src.type = 'video/mp4';
+    v.appendChild(src); v.load();
+  }());
+  </script>
   <div class="page-hero-inner ph-split">
     <div class="ph-copy">
     <p class="section-label">About</p>
