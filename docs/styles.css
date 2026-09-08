@@ -540,3 +540,26 @@ footer { background: #08201f; padding: 60px 40px 26px; }
   .trust-dup { display: none !important; }
 }
 
+
+/* ===== EXPANDABLE BENEFIT CARDS (desktop only, enabled by JS) ===== */
+.benefit-more { display: none; }
+.benefit-card.expandable { cursor: pointer; position: relative; }
+.benefit-card.expandable::after {
+  content: '+';
+  position: absolute; top: 28px; right: 24px;
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 1px solid var(--line); color: var(--text-light);
+  font-size: 16px; font-weight: 600; line-height: 22px; text-align: center;
+  transition: transform 0.25s, background 0.25s, color 0.25s, border-color 0.25s;
+}
+.benefit-card.expandable:hover::after { border-color: var(--accent); color: var(--ink); }
+.benefit-card.expandable:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.benefit-card.open::after { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.benefit-card.open .benefit-more { display: block; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--line); }
+.benefit-card .benefit-more p { font-size: 13.5px; line-height: 1.75; margin-bottom: 11px; }
+.benefit-card .benefit-more p:last-child { margin-bottom: 0; }
+@media (max-width: 860px) {
+  .benefit-card.open .benefit-more { display: none; }
+  .benefit-card.expandable { cursor: default; }
+  .benefit-card.expandable::after { display: none; }
+}

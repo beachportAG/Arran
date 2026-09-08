@@ -132,7 +132,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="styles.css?v=36">
+<link rel="stylesheet" href="styles.css?v=38">
 </head>
 <body>
 
@@ -287,31 +287,55 @@
         <div class="benefit-icon">&#8709;</div>
         <h3>Zero Fees</h3>
         <p>No agent commission, no listing fees, and we cover normal closing costs. The number we agree on is the number you walk away with.</p>
+              <div class="benefit-more">
+          <p>A traditional sale takes five to six percent off the top in commissions before you pay for anything else. None of that applies here. No listing fee, no staging, no photography, no marketing costs, and we cover the normal closing costs on our side.</p>
+          <p>What still comes out of the proceeds is what comes out of any sale: your remaining mortgage balance and any liens or back taxes attached to the property. Those are settled through the title company at closing, so you don't have to deal with them beforehand.</p>
+        </div>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">&#9874;</div>
         <h3>Sell Completely As-Is</h3>
         <p>Leaking roof, failed inspection, decades of deferred maintenance. Leave it. We handle every repair after closing, at our cost.</p>
+              <div class="benefit-more">
+          <p>There is no repair list and no inspection to renegotiate. We don't come back after the walkthrough asking for a credit, and we don't ask you to fix a thing before closing. Roof, air conditioning, plumbing, electrical, foundation, mold, fire or water damage. It stays our problem.</p>
+          <p>You also don't need to clean, paint, or make the house presentable. Nobody is coming through for a showing.</p>
+        </div>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">&#9200;</div>
         <h3>Your Timeline</h3>
         <p>Need to close in a week? We can. Need ninety days to find your next place? That works too. You pick the date, not a lender.</p>
+              <div class="benefit-more">
+          <p>Most closings land between seven and thirty days, and the limiting factor is almost always the title search rather than anything on our end. If the title is clear, a week is realistic.</p>
+          <p>If you need longer, say ninety days while you find your next place or wait on a family decision, the date is yours to pick. If your plans shift after we're under contract, tell us and we'll work with you on it.</p>
+        </div>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">&#128273;</div>
         <h3>Leave What You Don't Want</h3>
         <p>Furniture, appliances, a garage full of things you'd rather not deal with. Take what matters to you and leave the rest behind.</p>
+              <div class="benefit-more">
+          <p>Furniture, appliances, clothing, paperwork, a garage or shed packed to the ceiling. Take what matters to you and close the door on the rest. There's no dumpster to rent and no junk removal service to hire.</p>
+          <p>We handle the cleanout after closing at our own expense. This matters most on inherited houses, where emptying a parent's home is often the exact thing that stalls a sale for months.</p>
+        </div>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">&#9878;</div>
         <h3>Complicated Situations</h3>
         <p>Probate, inherited property, liens, code violations, difficult tenants, or a pending foreclosure. These are the deals we're built for.</p>
+              <div class="benefit-more">
+          <p>Probate and inherited property, heirs living in different states, liens, unpaid taxes, open code enforcement cases, permits that were never closed out, tenants behind on rent or refusing to leave, and pre-foreclosure with a sale date already on the calendar.</p>
+          <p>Bring these up early. Liens and violations get resolved through the title company at closing and they rarely kill a deal. They just need to be known up front.</p>
+        </div>
       </div>
       <div class="benefit-card">
-        <div class="benefit-icon">&#9679;</div>
-        <h3>Certainty of Closing</h3>
-        <p>We buy with our own funds, so there's no lender, no appraisal contingency, and no call two weeks in saying the financing collapsed.</p>
+        <div class="benefit-icon">&#9888;</div>
+        <h3>Avoid Wholesalers</h3>
+        <p>A lot of cash buyers never actually buy. They tie your house up under contract and then try to sell that contract to someone else. If nobody takes it, you've lost weeks.</p>
+        <div class="benefit-more">
+          <p>The pattern is consistent. Lock in a contract at a number that sounds good, then use the inspection period to come back and negotiate it down. While that plays out, your contract is being shopped to a list of investors in the hope that one of them takes it off their hands.</p>
+          <p>That hope is the entire plan, and hope is not a closing date. If no buyer turns up, the deal collapses and you have spent a month or more on nothing while whatever made you want to sell kept moving. Arran buys with his own funds and his own crew does the renovation, so the date he gives you is a date he controls.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -764,6 +788,27 @@ document.querySelectorAll('form[action*="formspree"]').forEach(function (form) {
     });
   });
 });
+
+/* EXPANDABLE BENEFIT CARDS (desktop only) */
+(function () {
+  if (!window.matchMedia('(min-width: 861px)').matches) return;
+  var cards = document.querySelectorAll('.benefit-card');
+  Array.prototype.forEach.call(cards, function (card) {
+    if (!card.querySelector('.benefit-more')) return;
+    card.classList.add('expandable');
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-expanded', 'false');
+    function toggle() {
+      var open = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); toggle(); }
+    });
+  });
+}());
 </script>
 </body>
 </html>
