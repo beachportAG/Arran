@@ -90,6 +90,25 @@
 .ph-slot .car-dots { margin-top: 14px; }
 .ph-split { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 52px; align-items: center; }
 .ph-split > * { min-width: 0; }
+.val-more { display: none; }
+@media (min-width: 861px) {
+  .val-card.expandable { cursor: pointer; position: relative; }
+  .val-card.expandable::after {
+    content: '+';
+    position: absolute; top: 26px; right: 22px;
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 1px solid var(--line); color: var(--text-light);
+    font-size: 16px; font-weight: 600; line-height: 22px; text-align: center;
+    transition: transform 0.25s, background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .val-card.expandable:hover::after { border-color: var(--accent); color: var(--ink); }
+  .val-card.expandable:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .val-card.open::after { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--ink); }
+  .val-card.open .val-more { display: block; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .val-card .val-more p { font-size: 13.2px; line-height: 1.75; margin-bottom: 10px; }
+  .val-card .val-more p:last-child { margin-bottom: 0; }
+  .val-card h3 { padding-right: 34px; }
+}
 @media (max-width: 1000px) { .val-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 860px) {
   .page-hero-inner { padding: 46px 22px 50px; }
@@ -270,31 +289,55 @@
         <div class="val-icon">&#128269;</div>
         <h3>He Shows His Work</h3>
         <p>Arran walks the property, prices the work it needs, and then explains how he reached the number. You'll understand what's driving it instead of being handed a figure and told to take it or leave it.</p>
+        <div class="val-more">
+          <p>Most buyers hand you a number and leave you guessing. Arran won't. He'll tell you what the roof costs, what the AC costs, and what it takes to make the house sellable again.</p>
+          <p>If something in that math looks wrong to you, say so. He would rather talk it through than have you sign something you don't understand.</p>
+        </div>
       </div>
       <div class="val-card">
         <div class="val-icon">&#128100;</div>
         <h3>One Person, Start to Finish</h3>
         <p>No handoffs between an acquisitions rep, a transaction coordinator, and someone you've never spoken to. The person who makes the promise is the person who keeps it.</p>
+        <div class="val-more">
+          <p>You won't get passed around. The man who answers the phone is the same man who walks your house, writes the offer, and sits at the closing table.</p>
+          <p>No call center. No script. No new person to explain your whole situation to every time you call.</p>
+        </div>
       </div>
       <div class="val-card">
         <div class="val-icon">&#9878;</div>
         <h3>Honest About the Tradeoff</h3>
         <p>A cash sale trades some price for speed, certainty, and zero effort or expense on your part. That's a real tradeoff and he'll explain it plainly instead of pretending it doesn't exist.</p>
+        <div class="val-more">
+          <p>A cash sale buys you speed and a sure thing. It does not get you top dollar. That is the trade, and pretending otherwise would be a lie.</p>
+          <p>If listing the house would put more money in your pocket and you have the time to wait, he will say so. That costs him the deal. He would rather tell you the truth.</p>
+        </div>
       </div>
       <div class="val-card">
         <div class="val-icon">&#9995;</div>
         <h3>No Pressure, Ever</h3>
         <p>You get a written offer and time to think about it. Have an attorney review it. Talk to your family. Get a second opinion. If the answer is no, that's a completely fine answer.</p>
+        <div class="val-more">
+          <p>You get the offer in writing. Then you get time. Sleep on it, call your kids, have a lawyer read it.</p>
+          <p>If the answer is no, that is the end of it. Nobody will call you five more times trying to talk you into it.</p>
+        </div>
       </div>
       <div class="val-card">
         <div class="val-icon">&#128296;</div>
         <h3>The Hard Stuff Is the Point</h3>
         <p>Liens, code violations, probate, hostile tenants, a foreclosure date on the calendar. These are the calls other buyers hang up on. They're the ones worth making here.</p>
+        <div class="val-more">
+          <p>Probate. Liens. Back taxes. Code violations. A tenant who won't leave. A foreclosure date already set.</p>
+          <p>Most buyers hear one of those and disappear. These are the houses Arran looks for, because those are the ones where he can actually help.</p>
+        </div>
       </div>
       <div class="val-card">
         <div class="val-icon">&#128205;</div>
         <h3>Local, Not National</h3>
         <p>He buys in Central Florida because he knows what a roof costs here, what a permit takes in this county, and what a neighborhood is actually worth. That knowledge is why the numbers hold up.</p>
+        <div class="val-more">
+          <p>He grew up in Melbourne, went to UCF, and never left. He knows these streets and what it really costs to fix a house here.</p>
+          <p>That is why his numbers hold up. He is not guessing from an office in another state.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -401,6 +444,25 @@ function closeMobileForm() {
   document.body.style.width = '';
   window.scrollTo(0, _scrollY);
 }
+/* VALUE CARDS: click to expand on desktop */
+if (window.matchMedia('(min-width: 861px)').matches) {
+  document.querySelectorAll('.val-card').forEach(function (card) {
+    if (!card.querySelector('.val-more')) return;
+    card.classList.add('expandable');
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-expanded', 'false');
+    function t() {
+      var open = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    card.addEventListener('click', t);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); }
+    });
+  });
+}
+
 /* VALUE CARD ACCORDION (phones only) */
 if (window.matchMedia('(max-width: 860px)').matches) {
   document.querySelectorAll('.val-card').forEach(function (card) {
