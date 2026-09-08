@@ -86,6 +86,9 @@
 .pj-single img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pj-single .ba-tag-r { right: 14px; }
 
+.pj-pair { position: relative; aspect-ratio: 1080 / 1060; overflow: hidden; background: var(--cream-dk); }
+.pj-pair img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 /* ===== ADD-MORE NOTE ===== */
 .more-note { margin-top: 46px; background: var(--cream); border: 1px dashed var(--line); border-radius: 14px; padding: 28px 30px; text-align: center; }
 .more-note p { font-size: 14.5px; color: var(--text-light); font-weight: 300; line-height: 1.8; }
@@ -195,10 +198,10 @@
 
   <div class="filters" id="filters">
     <button class="filter-chip active" data-filter="all">All Projects</button>
-    <button class="filter-chip" data-filter="orange">Orange</button>
     <button class="filter-chip" data-filter="seminole">Seminole</button>
     <button class="filter-chip" data-filter="osceola">Osceola</button>
     <button class="filter-chip" data-filter="lake">Lake</button>
+    <button class="filter-chip" data-filter="volusia">Volusia</button>
     <button class="filter-chip" data-filter="polk">Polk</button>
     <button class="filter-chip" data-filter="brevard">Brevard</button>
   </div>
@@ -206,17 +209,17 @@
   <div class="pj-list" id="pjList">
 
     <!-- ===== PROJECT 1 — BEFORE/AFTER ===== -->
-    <article class="pj" data-county="orange">
+    <article class="pj" data-county="lake">
       <div class="ba" data-ba>
-        <img class="ba-after" src="../images/projects/pine-hills-after.jpg" alt="Pine Hills Orlando kitchen after full renovation">
-        <img class="ba-before" src="../images/projects/pine-hills-before.jpg" alt="Pine Hills Orlando kitchen before renovation">
+        <img class="ba-after" src="../images/projects/leesburg-after.jpg" alt="Leesburg kitchen and living area after full renovation">
+        <img class="ba-before" src="../images/projects/leesburg-before.jpg" alt="Leesburg kitchen and living area before renovation, stripped to bare floor">
         <div class="ba-handle"></div>
         <span class="ba-tag ba-tag-l">Before</span>
         <span class="ba-tag ba-tag-r">After</span>
         <span class="ba-hint">Drag to compare</span>
       </div>
       <div class="pj-info">
-        <p class="pj-loc">Pine Hills &middot; Orange County</p>
+        <p class="pj-loc">Leesburg &middot; Lake County</p>
         <h2>Inherited and Untouched for 30 Years</h2>
         <p>Two siblings inherited their mother's house and lived four states away. It hadn't been updated since the eighties, the roof was failing, and it was still full of her belongings. Neither of them wanted to fly down to clean it out. We bought it as-is, handled the cleanout ourselves, and closed before the next tax bill came due.</p>
         <div class="pj-facts">
@@ -249,20 +252,19 @@
       </div>
     </article>
 
-    <!-- ===== PROJECT 3 — FINISHED ONLY ===== -->
-    <article class="pj" data-county="lake">
-      <div class="pj-single">
-        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='750'%3E%3Crect fill='%23dcd4c6' width='1000' height='750'/%3E%3Ctext x='500' y='360' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='%23a09788' text-anchor='middle'%3EFINISHED PHOTO%3C/text%3E%3Ctext x='500' y='405' font-family='Inter,sans-serif' font-size='20' fill='%23b5ab9c' text-anchor='middle'%3Eimages/projects/mount-dora.jpg%3C/text%3E%3C/svg%3E" alt="Restored Mount Dora bungalow exterior">
-        <span class="ba-tag ba-tag-r">Completed</span>
+    <!-- ===== PROJECT 3 — BEFORE/AFTER PAIR ===== -->
+    <article class="pj" data-county="volusia">
+      <div class="pj-pair">
+        <img src="../images/projects/port-orange-before-after.jpg" alt="Before and after of a Port Orange home bought as-is for cash, showing a new roof, fresh paint and new landscaping" loading="lazy">
       </div>
       <div class="pj-info">
-        <p class="pj-loc">Mount Dora &middot; Lake County</p>
-        <h2>Job Transfer With Three Weeks' Notice</h2>
-        <p>Owner accepted a position in North Carolina and had to be there by the first of the month. Listing it meant carrying two mortgages for an unknown number of months. She picked her closing date, we worked around it, and she left with the house behind her.</p>
+        <p class="pj-loc">Port Orange &middot; Volusia County</p>
+        <h2>The Move-In Date Was Already Set</h2>
+        <p>The owner had a place waiting at a retirement home and a fixed date to be out. Listing it meant showings, repairs, and no certainty about when it would actually close. We worked backward from the move-in date, bought it as-is with everything that wasn't going along, and closed in time.</p>
         <div class="pj-facts">
-          <div class="pj-fact"><b>21 days</b><span>Close Time</span></div>
-          <div class="pj-fact"><b>Relocation</b><span>Situation</span></div>
-          <div class="pj-fact"><b>Cosmetic</b><span>Repairs</span></div>
+          <div class="pj-fact"><b>22 days</b><span>Close Time</span></div>
+          <div class="pj-fact"><b>Retirement Move</b><span>Situation</span></div>
+          <div class="pj-fact"><b>As-Is</b><span>Condition</span></div>
         </div>
       </div>
     </article>
