@@ -563,3 +563,48 @@ footer { background: #08201f; padding: 60px 40px 26px; }
   .benefit-card.expandable { cursor: default; }
   .benefit-card.expandable::after { display: none; }
 }
+
+/* ===== LIQUID GLASS HERO FORM (desktop only; .hero-form-wrap is hidden on mobile) ===== */
+.hero-form-wrap .offer-card {
+  background: rgba(18, 22, 25, 0.34);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 4px solid var(--accent);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.45),
+    0 10px 28px rgba(0,0,0,0.30),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+}
+.hero-form-wrap .offer-card h2 { color: var(--white); }
+.hero-form-wrap .offer-card .oc-sub { color: rgba(255,255,255,0.72); }
+.hero-form-wrap form label { color: rgba(255,255,255,0.82); }
+.hero-form-wrap form input,
+.hero-form-wrap form select,
+.hero-form-wrap form textarea {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.24);
+  color: var(--white);
+  color-scheme: dark;
+}
+.hero-form-wrap form input::placeholder,
+.hero-form-wrap form textarea::placeholder { color: rgba(255,255,255,0.46); }
+.hero-form-wrap form select option { color: var(--text); background: var(--white); }
+.hero-form-wrap form input:focus,
+.hero-form-wrap form select:focus,
+.hero-form-wrap form textarea:focus {
+  background: rgba(255,255,255,0.18);
+  border-color: var(--accent);
+}
+.hero-form-wrap form input:-webkit-autofill,
+.hero-form-wrap form input:-webkit-autofill:hover,
+.hero-form-wrap form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 60px rgba(38,44,48,0.98) inset !important;
+  box-shadow: 0 0 0 60px rgba(38,44,48,0.98) inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.hero-form-wrap .form-fine { color: rgba(255,255,255,0.55); }
+/* Browsers without backdrop blur get a darker tint so the text stays readable */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hero-form-wrap .offer-card { background: rgba(18,22,25,0.82); }
+}
